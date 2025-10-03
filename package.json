@@ -1,0 +1,123 @@
+{
+  "name": "emploi-romand",
+  "version": "1.0.0",
+  "description": "Application SaaS ultra-automatisée dédiée exclusivement à la recherche d'emploi en Suisse Romande",
+  "type": "module",
+  "author": {
+    "name": "Emploi Romand Team",
+    "email": "support@emploiromand.ch",
+    "url": "https://emploiromand.ch"
+  },
+  "license": "MIT",
+  "keywords": [
+    "emploi",
+    "job-search",
+    "suisse-romande",
+    "switzerland",
+    "ai",
+    "automation",
+    "saas",
+    "career",
+    "recruitment"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hypnose-Patrick/pnl-formation-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Hypnose-Patrick/pnl-formation-app/issues"
+  },
+  "homepage": "https://github.com/Hypnose-Patrick/pnl-formation-app#readme",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "type-check": "tsc --noEmit",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "db:setup": "cd supabase && supabase db reset",
+    "db:migrate": "cd supabase && supabase db push",
+    "db:seed": "cd supabase && supabase db seed",
+    "docker:build": "docker build -t emploi-romand:latest .",
+    "docker:run": "docker run -d --name emploi-romand -p 3000:3000 --env-file .env emploi-romand:latest",
+    "docker:stop": "docker stop emploi-romand && docker rm emploi-romand",
+    "docker:logs": "docker logs -f emploi-romand",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "@supabase/supabase-js": "^2.38.4",
+    "@tanstack/react-query": "^5.12.2",
+    "@hello-pangea/dnd": "^16.5.0",
+    "recharts": "^2.10.3",
+    "openai": "^4.20.1",
+    "axios": "^1.6.2",
+    "date-fns": "^2.30.0",
+    "zustand": "^4.4.7",
+    "react-hook-form": "^7.48.2",
+    "zod": "^3.22.4",
+    "@hookform/resolvers": "^3.3.2",
+    "lucide-react": "^0.294.0",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^2.1.0",
+    "class-variance-authority": "^0.7.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@types/node": "^20.10.4",
+    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/parser": "^6.13.2",
+    "@vitejs/plugin-react": "^4.2.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.7",
+    "vitest": "^1.0.4",
+    "@vitest/ui": "^1.0.4",
+    "@vitest/coverage-v8": "^1.0.4",
+    "@playwright/test": "^1.40.1",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "prettier": "^3.1.1",
+    "prettier-plugin-tailwindcss": "^0.5.9",
+    "tailwindcss": "^3.3.6",
+    "postcss": "^8.4.32",
+    "autoprefixer": "^10.4.16",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,css,scss,md}": [
+      "prettier --write"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
