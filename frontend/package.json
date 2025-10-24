@@ -1,43 +1,40 @@
 {
-  "name": "pnl-formation-app-frontend",
+  "name": "profilpro5d-frontend",
   "version": "1.0.0",
-  "description": "Frontend pour l'application de recherche d'emploi avec PNL et IA pour la Suisse romande",
+  "description": "Frontend for ProfilPro 5D - Professional 5D profiling application",
+  "type": "module",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "type-check": "tsc --noEmit"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .js,.jsx",
+    "lint:fix": "eslint . --ext .js,.jsx --fix"
   },
   "dependencies": {
-    "next": "^14.0.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "@types/node": "^20.0.0",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
-    "typescript": "^5.0.0",
-    "tailwindcss": "^3.3.0",
-    "autoprefixer": "^10.4.0",
-    "postcss": "^8.4.0",
-    "lucide-react": "^0.292.0",
-    "framer-motion": "^10.16.0",
-    "react-dnd": "^16.0.1",
-    "react-dnd-html5-backend": "^16.0.1",
-    "date-fns": "^2.30.0",
-    "react-hook-form": "^7.47.0",
-    "@hookform/resolvers": "^3.3.0",
-    "zod": "^3.22.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "@supabase/supabase-js": "^2.38.4",
+    "zustand": "^4.4.7",
+    "axios": "^1.6.2",
+    "recharts": "^2.10.3",
+    "react-hook-form": "^7.48.2",
+    "zod": "^3.22.4",
+    "@hookform/resolvers": "^3.3.2",
+    "lucide-react": "^0.294.0",
+    "clsx": "^2.0.0",
+    "date-fns": "^2.30.0"
   },
   "devDependencies": {
-    "@next/eslint-config-next": "^14.0.0",
-    "eslint": "^8.0.0",
-    "eslint-config-next": "^14.0.0",
-    "@tailwindcss/forms": "^0.5.0",
-    "@tailwindcss/typography": "^0.5.0"
-  },
-  "engines": {
-    "node": ">=18.0.0"
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.0.7",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "tailwindcss": "^3.3.6",
+    "postcss": "^8.4.32",
+    "autoprefixer": "^10.4.16"
   }
 }

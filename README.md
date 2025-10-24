@@ -1,232 +1,363 @@
-# PNL Formation App
+# ProfilPro 5D - Application de Profiling Professionnel Multidimensionnel
 
-## Description
-Application de Recherche d'Emploi + Outils IA pour la Suisse romande
+![ProfilPro 5D](https://img.shields.io/badge/ProfilPro-5D-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Node](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)
 
-Cette application combine les techniques de Programmation Neuro-Linguistique (PNL) avec des outils d'intelligence artificielle pour optimiser la recherche d'emploi en Suisse romande. Elle offre un accompagnement personnalisé pour les candidats en quête d'opportunités professionnelles.
+## 📖 Description
 
-## 🎯 Objectifs du Projet
+**ProfilPro 5D** est une application web SaaS innovante qui génère des profils professionnels complets et multidimensionnels pour les chercheurs d'emploi. L'application analyse la personnalité des utilisateurs à travers **5 modèles distincts** :
 
-- **Optimisation de la recherche d'emploi** : Utilisation de l'IA pour identifier les meilleures opportunités
-- **Techniques PNL** : Application des principes PNL pour améliorer la confiance et les performances en entretien
-- **Ciblage géographique** : Focus sur le marché de l'emploi en Suisse romande
-- **Formation personnalisée** : Modules d'apprentissage adaptés aux besoins individuels
+1. **Astrologie Occidentale** - Analyse du thème astral (signe solaire, lunaire, ascendant)
+2. **DISC** - Profil comportemental au travail (Dominance, Influence, Stabilité, Conformité)
+3. **RIASEC (Codes Holland)** - Typologie des intérêts professionnels
+4. **Ennéagramme** - Système de personnalité à 9 types
+5. **Astrologie Tibétaine (Byung-rtsis)** - Analyse des éléments et énergies
 
-## 🚀 Fonctionnalités Prévues
+Le résultat est un **rapport détaillé de 2 pages** exportable en PDF, Word et Markdown, offrant une vision holistique du profil professionnel de l'utilisateur.
 
-### Phase 1 - MVP (Minimum Viable Product)
-- [ ] Interface utilisateur responsive
-- [ ] Système de profiling candidat
-- [ ] Base de données des offres d'emploi
-- [ ] Algorithmes de matching IA
-- [ ] Modules PNL de base
+---
 
-### Phase 2 - Fonctionnalités Avancées
-- [ ] Chatbot IA pour accompagnement personnalisé
-- [ ] Simulateur d'entretiens avec analyse comportementale
-- [ ] Système de recommandations intelligentes
-- [ ] Intégration APIs jobboards suisses
-- [ ] Analytics et reporting
+## 🎯 Fonctionnalités
 
-### Phase 3 - Fonctionnalités Collaboratives
-- [ ] Réseau de mentors PNL
-- [ ] Communauté d'entraide
-- [ ] Système de feedback collaboratif
-- [ ] Ateliers virtuels
+### ✅ Fonctionnalités Principales
+
+- **Questionnaire Intelligent** : 35 questions de mise en situation professionnelle
+- **Analyse Multidimensionnelle** : Génération de profil basée sur 5 modèles
+- **Tableau de Bord Visuel** : Interface élégante avec graphiques interactifs
+- **Export Multi-Format** : PDF, Word (.docx) et Markdown (.md)
+- **Authentification Sécurisée** : Gestion des utilisateurs via Supabase
+- **Design Responsive** : Compatible desktop, tablette et mobile
+
+### 🎨 Interface Utilisateur
+
+- Design moderne avec Tailwind CSS
+- Visualisations de données avec Recharts
+- Animations fluides et intuitives
+- Thème professionnel et élégant
+
+---
 
 ## 🛠 Stack Technique
 
 ### Frontend
-- React.js / Next.js
-- TypeScript
-- Tailwind CSS
-- Material-UI ou Chakra UI
+- **Framework** : React 18 avec Vite.js
+- **Styling** : Tailwind CSS
+- **Routing** : React Router v6
+- **State Management** : Zustand (persist)
+- **Forms** : React Hook Form + Zod
+- **Charts** : Recharts
+- **HTTP Client** : Axios
+- **Icons** : Lucide React
 
 ### Backend
-- Node.js / Express.js
-- Python pour les algorithmes IA
-- PostgreSQL ou MongoDB
-- Redis pour le caching
+- **Runtime** : Node.js 18+
+- **Framework** : Express.js
+- **Database** : Supabase (PostgreSQL)
+- **Authentication** : Supabase Auth (JWT)
+- **API Style** : RESTful
 
-### IA et Machine Learning
-- OpenAI GPT API
-- TensorFlow / PyTorch
-- Spacy pour le NLP
-- Scikit-learn
+### Services & Outils
+- **Database** : Supabase (PostgreSQL + Auth)
+- **Document Generation** :
+  - PDF : pdf-lib
+  - Word : docx
+  - Markdown : natif
+- **Deployment** : Docker ready
 
-### Déploiement
-- Docker
-- AWS ou Google Cloud
-- CI/CD avec GitHub Actions
+---
 
 ## 📁 Structure du Projet
 
 ```
 pnl-formation-app/
+├── backend/
+│   ├── src/
+│   │   ├── config/           # Configuration (DB, constantes)
+│   │   ├── controllers/      # Contrôleurs API
+│   │   ├── middleware/       # Auth, validation, erreurs
+│   │   ├── models/           # Modèles de données
+│   │   ├── routes/           # Routes API
+│   │   ├── services/         # Logique métier
+│   │   │   ├── profileGeneration/    # Analyseurs DISC, RIASEC, etc.
+│   │   │   └── documentGeneration/   # Générateurs PDF, Word, MD
+│   │   └── server.js         # Point d'entrée
+│   ├── package.json
+│   └── .env.example
+│
 ├── frontend/
 │   ├── src/
-│   ├── public/
-│   └── package.json
-├── backend/
-│   ├── api/
-│   ├── models/
-│   ├── services/
-│   └── requirements.txt
-├── ai-modules/
-│   ├── nlp/
-│   ├── matching/
-│   └── analytics/
+│   │   ├── components/
+│   │   │   ├── common/       # Composants réutilisables
+│   │   │   ├── questionnaire/# Composants du questionnaire
+│   │   │   ├── profile/      # Composants du profil
+│   │   │   └── export/       # Composants d'export
+│   │   ├── pages/            # Pages de l'application
+│   │   ├── hooks/            # Custom hooks
+│   │   ├── services/         # API calls
+│   │   ├── store/            # Zustand stores
+│   │   ├── App.jsx           # Composant principal
+│   │   └── main.jsx          # Point d'entrée
+│   ├── index.html
+│   ├── package.json
+│   ├── vite.config.js
+│   └── tailwind.config.js
+│
+├── supabase/
+│   └── migrations/
+│       └── 001_init_schema.sql
+│
 ├── docs/
-│   ├── api/
-│   ├── user-guide/
-│   └── development/
-├── tests/
-├── docker-compose.yml
+│   ├── ARCHITECTURE.md       # Documentation architecture
+│   ├── API_ENDPOINTS.md      # Endpoints API
+│   ├── DATABASE_SCHEMA.md    # Schémas de base de données
+│   ├── QUESTIONNAIRE_LOGIC.md# Logique du questionnaire
+│   └── COMPONENTS.md         # Plan des composants React
+│
+├── .gitignore
+├── Dockerfile
 └── README.md
 ```
 
-## 🚦 Getting Started
+---
+
+## 🚀 Installation et Démarrage
 
 ### Prérequis
-- Node.js (v18+)
-- Python (v3.9+)
-- PostgreSQL
-- Docker (optionnel)
 
-### Installation
+- **Node.js** >= 18.0.0
+- **npm** >= 9.0.0
+- **Compte Supabase** (gratuit)
+
+### 1. Cloner le Repository
 
 ```bash
-# Cloner le repository
 git clone https://github.com/Hypnose-Patrick/pnl-formation-app.git
 cd pnl-formation-app
+```
 
-# Installation des dépendances frontend
-cd frontend
+### 2. Configuration de Supabase
+
+1. Créez un compte sur [supabase.com](https://supabase.com)
+2. Créez un nouveau projet
+3. Exécutez la migration SQL : `supabase/migrations/001_init_schema.sql`
+4. Récupérez vos clés API (URL + Anon Key)
+
+### 3. Installation du Backend
+
+```bash
+cd backend
 npm install
 
-# Installation des dépendances backend
-cd ../backend
-pip install -r requirements.txt
-
-# Configuration de la base de données
+# Copier et configurer les variables d'environnement
 cp .env.example .env
-# Éditer .env avec vos paramètres
-
-# Lancer l'application
-npm run dev
+# Éditer .env avec vos clés Supabase
 ```
 
-## 🤝 Contribution
-
-Nous accueillons toutes les contributions ! Voici comment participer :
-
-1. **Fork** le projet
-2. Créer une branche pour votre fonctionnalité (`git checkout -b feature/AmazingFeature`)
-3. Commit vos changements (`git commit -m 'Add some AmazingFeature'`)
-4. Push vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrir une **Pull Request**
-
-### Guidelines de Contribution
-- Respecter les conventions de code existantes
-- Ajouter des tests pour les nouvelles fonctionnalités
-- Documenter les changements importants
-- Utiliser des messages de commit descriptifs
-
-## 📋 Roadmap
-
-### Q1 2025
-- [x] Création du repository
-- [ ] Setup de l'architecture de base
-- [ ] Développement du MVP
-- [ ] Tests utilisateurs initiaux
-
-### Q2 2025
-- [ ] Intégration des modules IA
-- [ ] Beta testing
-- [ ] Optimisation des performances
-- [ ] Lancement public
-
-### Q3-Q4 2025
-- [ ] Fonctionnalités avancées
-- [ ] Expansion géographique
-- [ ] Partenariats entreprises
-- [ ] Mobile app
-
-## 🔧 Configuration
-
-### Variables d'Environnement
-
+**Variables d'environnement requises** (`.env`) :
 ```env
-# Database
-DB_HOST=localhost
-DB_PORT=5432
-DB_NAME=pnl_formation_app
-DB_USER=your_username
-DB_PASSWORD=your_password
-
-# API Keys
-OPENAI_API_KEY=your_openai_key
-JOB_API_KEY=your_job_api_key
-
-# App Settings
-PORT=3000
+PORT=5000
 NODE_ENV=development
-JWT_SECRET=your_jwt_secret
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_ANON_KEY=your-anon-key
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+JWT_SECRET=your-secret-key
+ALLOWED_ORIGINS=http://localhost:3000,http://localhost:5173
 ```
+
+**Démarrer le serveur backend :**
+```bash
+npm run dev
+# Serveur lancé sur http://localhost:5000
+```
+
+### 4. Installation du Frontend
+
+```bash
+cd ../frontend
+npm install
+
+# Démarrer le serveur de développement
+npm run dev
+# Application lancée sur http://localhost:3000
+```
+
+### 5. Accéder à l'Application
+
+Ouvrez votre navigateur à l'adresse : **http://localhost:3000**
+
+---
+
+## 📚 Documentation
+
+### Documentation Technique Complète
+
+Consultez le dossier `docs/` pour la documentation détaillée :
+
+- **[ARCHITECTURE.md](docs/ARCHITECTURE.md)** - Architecture complète du système
+- **[API_ENDPOINTS.md](docs/API_ENDPOINTS.md)** - Documentation de tous les endpoints API
+- **[DATABASE_SCHEMA.md](docs/DATABASE_SCHEMA.md)** - Schémas de base de données détaillés
+- **[QUESTIONNAIRE_LOGIC.md](docs/QUESTIONNAIRE_LOGIC.md)** - 5 exemples de questions + logique de scoring
+- **[COMPONENTS.md](docs/COMPONENTS.md)** - Plan complet des composants React
+
+### Endpoints API Principaux
+
+**Base URL** : `http://localhost:5000/api`
+
+#### Authentification
+- `POST /api/auth/register` - Inscription
+- `POST /api/auth/login` - Connexion
+- `GET /api/auth/me` - Profil utilisateur
+
+#### Questionnaire
+- `GET /api/questionnaire` - Récupérer le questionnaire actif
+- `POST /api/questionnaire/submit` - Soumettre les réponses
+
+#### Profil
+- `GET /api/profile` - Récupérer le profil complet
+- `POST /api/profile/generate` - Générer le profil 5D
+
+#### Export
+- `POST /api/export/pdf` - Exporter en PDF
+- `POST /api/export/word` - Exporter en Word
+- `POST /api/export/markdown` - Exporter en Markdown
+
+---
 
 ## 🧪 Tests
 
 ```bash
-# Tests frontend
-cd frontend && npm test
-
 # Tests backend
-cd backend && pytest
+cd backend
+npm test
 
-# Tests d'intégration
-docker-compose -f docker-compose.test.yml up
+# Tests frontend
+cd frontend
+npm test
 ```
-
-## 📚 Documentation
-
-- [Guide Utilisateur](docs/user-guide/)
-- [Documentation API](docs/api/)
-- [Guide de Développement](docs/development/)
-- [Architecture](docs/architecture.md)
-
-## 🌟 Fonctionnalités Uniques
-
-### Techniques PNL Intégrées
-- **Ancrage positif** : Techniques pour renforcer la confiance en soi
-- **Reformulation linguistique** : Optimisation des CVs et lettres de motivation
-- **Visualisation de succès** : Exercices de préparation mentale
-- **Communication efficace** : Formation aux techniques d'entretien
-
-### IA Contextualisée Suisse Romande
-- **Analyse du marché local** : Tendances spécifiques à la région
-- **Adaptation culturelle** : Prise en compte des particularités suisses
-- **Multilinguisme** : Support français/allemand/anglais
-- **Réseau professionnel** : Mapping des entreprises et secteurs clés
-
-## 📞 Support et Contact
-
-- **Issues** : [GitHub Issues](https://github.com/Hypnose-Patrick/pnl-formation-app/issues)
-- **Discussions** : [GitHub Discussions](https://github.com/Hypnose-Patrick/pnl-formation-app/discussions)
-- **Email** : support@pnl-formation-app.ch (à configurer)
-
-## 📄 Licence
-
-Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
-
-## 🙏 Remerciements
-
-- Communauté PNL pour les ressources et techniques
-- Développeurs open-source pour les outils utilisés
-- Beta testeurs et contributeurs
-- Partenaires du secteur de l'emploi en Suisse romande
 
 ---
 
-**Développé avec ❤️ pour optimiser la recherche d'emploi en Suisse romande**
+## 🐳 Docker
 
-*Prêt pour la collaboration depuis Genspark et au-delà !*
+**Construire l'image Docker :**
+```bash
+docker build -t profilpro5d .
+```
+
+**Lancer le conteneur :**
+```bash
+docker run -d -p 3000:3000 -p 5000:5000 --env-file .env profilpro5d
+```
+
+---
+
+## 📦 Build Production
+
+### Backend
+```bash
+cd backend
+npm start
+```
+
+### Frontend
+```bash
+cd frontend
+npm run build
+npm run preview
+```
+
+---
+
+## 🎨 Exemples de Questions du Questionnaire
+
+Voici un aperçu des questions posées :
+
+### Question 1 : Style de Leadership
+> "Face à un projet ambitieux avec un délai serré, comment réagissez-vous naturellement ?"
+
+**Options :**
+- A) Je prends immédiatement les choses en main → **DISC : D=3, RIASEC : E=3, Enneagram : 8=3**
+- B) J'analyse d'abord tous les aspects → **DISC : C=3, RIASEC : C=3, Enneagram : 5=3**
+- C) Je rassemble l'équipe pour discuter → **DISC : S=3, RIASEC : S=3, Enneagram : 2=3**
+- D) Je me lance avec enthousiasme → **DISC : I=3, RIASEC : A=2, Enneagram : 7=3**
+
+**Plus de détails** : Consultez [QUESTIONNAIRE_LOGIC.md](docs/QUESTIONNAIRE_LOGIC.md)
+
+---
+
+## 🤝 Contribution
+
+Les contributions sont les bienvenues ! Voici comment contribuer :
+
+1. **Fork** le projet
+2. Créer une branche (`git checkout -b feature/AmazingFeature`)
+3. Commit vos changements (`git commit -m 'Add AmazingFeature'`)
+4. Push vers la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrir une **Pull Request**
+
+### Guidelines
+- Respecter les conventions de code (ESLint)
+- Ajouter des tests pour les nouvelles fonctionnalités
+- Documenter les changements importants
+
+---
+
+## 📋 Roadmap
+
+### Phase 1 - MVP ✅
+- [x] Architecture de base
+- [x] Documentation complète
+- [x] Code de démarrage (backend + frontend)
+- [ ] Questionnaire complet (35 questions)
+- [ ] Génération de profil basique
+- [ ] Export PDF/Word/Markdown
+
+### Phase 2 - Améliorations
+- [ ] Visualisations avancées (graphiques interactifs)
+- [ ] IA pour affiner les profils (OpenAI GPT)
+- [ ] Recommandations de carrière personnalisées
+- [ ] Historique des profils
+- [ ] Mode comparaison de profils
+
+### Phase 3 - Monétisation
+- [ ] Plans premium (profils détaillés avancés)
+- [ ] Coaching personnalisé
+- [ ] API pour recruteurs
+- [ ] Marketplace de services
+
+---
+
+## 📄 Licence
+
+Ce projet est sous licence **MIT**. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+---
+
+## 👥 Équipe
+
+**ProfilPro 5D Team**
+
+- Architecture & Développement : Claude (Anthropic)
+- Product Owner : Hypnose-Patrick
+
+---
+
+## 📞 Support
+
+- **Issues** : [GitHub Issues](https://github.com/Hypnose-Patrick/pnl-formation-app/issues)
+- **Email** : support@profilpro5d.com (à configurer)
+
+---
+
+## 🙏 Remerciements
+
+- Modèles de profiling : DISC, RIASEC, Ennéagramme
+- Stack technique : React, Express, Supabase, Tailwind CSS
+- Inspiration : Recherche en psychologie et développement de carrière
+
+---
+
+**Développé avec ❤️ pour révéler le potentiel professionnel de chacun**
+
+🚀 **Prêt à créer votre profil 5D ?**
